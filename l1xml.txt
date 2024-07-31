@@ -1,0 +1,44 @@
+API ( Application Programming Interface )
+
+=>XML ( Extensible Markup Language)
+
+Extensible = Extend our notation 
+Markup = Write using Markup
+Language = Create your own document
+
+XML is not all the same with HTML. but both are Markup Language.
+XML is used to describe the data.
+XML must define custom rules(tags). HTML has pre-define rules (tags)
+
+describe = XML designed to describe data and to focus on what data is
+display = HTML was designed to display data and to focus on what data is
+
+=XML
+need to enclose name of key within double quotes (should not use single quotes)
+
+eg.element 
+<markup>Something Here</markup>
+
+eg.attribute 
+<markup title="info">Something Here</markup>
+
+Product List            Root Element ( Parent Element)
+    Product             Child of Root Element ( Child Element )
+        Name            child element (root node)
+        Description     child element (root node)
+        Price           child element (root node)
+
+        
+=> Example
+
+    - Jetbrain 
+        - Webstorm Editor
+            - Webstorm
+            - html/css/js support
+            - $100
+    
+    - Phpstrom Editor
+        - Phpstrom
+        - php support
+        - $150
+
