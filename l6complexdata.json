@@ -1,0 +1,70 @@
+{
+    "articles":[
+        {
+            "title":"This is new article 1",
+            "content":"Bacon ipsum dolor amet beef ribs mignon cupim sirloin hamburger rump.",
+            "rating":5
+        },
+        {
+            "title":"This is new article 3",
+            "content":"Bacon ipsum dolor amet beef ribs mignon cupim sirloin hamburger rump.",
+            "rating":5
+        },
+        {
+            "title":"This is new article 5",
+            "content":"Bacon ipsum dolor amet beef ribs mignon cupim sirloin hamburger rump.",
+            "rating":5
+        },
+        {
+            "title":"This is new article 7",
+            "content":"Bacon ipsum dolor amet beef ribs mignon cupim sirloin hamburger rump.",
+            "rating":5
+        }
+    ],
+
+    "sports":[
+        {
+            "title":"This is new sport 2",
+            "content":"Bacon ipsum dolor amet beef ribs mignon cupim sirloin hamburger rump.",
+            "rating":5
+        },
+        {
+            "title":"This is new sport 4",
+            "content":"Bacon ipsum dolor amet beef ribs mignon cupim sirloin hamburger rump.",
+            "rating":5
+        },
+        {
+            "title":"This is new sport 6",
+            "content":"Bacon ipsum dolor amet beef ribs mignon cupim sirloin hamburger rump.",
+            "rating":5
+        },
+        {
+            "title":"This is new sport 8",
+            "content":"Bacon ipsum dolor amet beef ribs mignon cupim sirloin hamburger rump.",
+            "rating":5
+        }
+    ],
+
+    "stories":[
+        {
+            "title":"This is new story 9",
+            "content":"Bacon ipsum dolor amet beef ribs mignon cupim sirloin hamburger rump.",
+            "rating":5
+        },
+        {
+            "title":"This is new story 10",
+            "content":"Bacon ipsum dolor amet beef ribs mignon cupim sirloin hamburger rump.",
+            "rating":5
+        },
+        {
+            "title":"This is new story 11",
+            "content":"Bacon ipsum dolor amet beef ribs mignon cupim sirloin hamburger rump.",
+            "rating":5
+        },
+        {
+            "title":"This is new story 12",
+            "content":"Bacon ipsum dolor amet beef ribs mignon cupim sirloin hamburger rump.",
+            "rating":5
+        }
+    ]
+}

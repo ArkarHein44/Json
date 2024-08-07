@@ -18,3 +18,18 @@
     <Product>
 </Root>
 
+=> Exercise ( After Namespace )
+<Root>
+    <v:Product>
+        <v:title>Vehicle</v:title>
+        <v:type>EV Car</v:type>
+    <v:Product>
+    <c:Product>
+        <c:title>T-shirt</c:title>
+       <c:color>Red</c:color>
+    <c:Product>
+    <f:Product>
+        <f:title>Fruit</f:title>
+        <f:name>Orange</f:name>
+    <f:Product>
+</Root>

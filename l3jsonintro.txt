@@ -1,0 +1,31 @@
+=> JSON (JavaScript Object Notation)
+
+=>JSON
+JavaScript Object Notation
+Light-weighted 
+Does not support comments and namespaces
+NoSQL database like MongoDB use JSON formats
+
+=>JSON
+Need to enclose name of key within double quotes (should not use single quotes)
+But can use single quotes to enclose key namespaces
+
+=>JSON vs XML
+JSON is more consise/lightweight/easy to understand
+XML is more text longer and look more complex
+
+=>JSON Syntax Rules
+JSON data to write inside curly braces
+Data is represented as key value pairs
+Keys and values should be encolsed in double quotes
+Key and value should be separated by colon (:)
+Comma(,) is used to separated data 
+
+=>Data types of JSON
+string 
+number
+boolean
+null
+array
+object 
+

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>OpenWeatherMap API (Application Programming Interface)</title>
+</head>
+<body>
+    
+
+
+
+    <script type="text/Javascript">
+        const info = {
+            
+            "lat":33.44,
+            "lon":-94.04,
+            "timezone":"America/Chicago",
+            "timezone_offset":-18000,
+            "current":{
+               "dt":1684929490,
+               "sunrise":1684926645,
+               "sunset":1684977332,
+               "temp":292.55,
+               "feels_like":292.87,
+               "pressure":1014,
+               "humidity":89,
+               "dew_point":290.69,
+               "uvi":0.16,
+               "clouds":53,
+               "visibility":10000,
+               "wind_speed":3.13,
+               "wind_deg":93,
+               "wind_gust":6.71,
+               "weather":[
+                  {
+                     "id":803,
+                     "main":"Clouds",
+                     "description":"broken clouds",
+                     "icon":"04d"
+                  }
+               ]
+            }
+        };
+
+        // Dot Notation
+        // Bracket Notation
+
+        console.log(info);
+        console.log(info.current.weather); // Dot Notation
+        console.log(info.current.weather[0].main); // Dot Notation
+        console.log(info.current.weather[0]["main"]); // Bracket Notation
+        console.log(info.current.wind_speed); // Dot Notation
+        console.log(info.current["wind_speed"]); // Bracket Notation
+        console.log(info ["current"]["wind_speed"]); // Bracket Notation
+        
+    </script>
+</body>
+</html>

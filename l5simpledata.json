@@ -1,0 +1,14 @@
+{
+    "firstname":"Kyaw",
+    "lastname":"Zayar",
+    "age":15,
+    "tax":false,
+    "passport":null,
+    "remark":"Lorem ipsum dolor, sit amet consectetur adipisicing elit",
+    "holiday":["Saturday","Sunday"],
+    "qualify":[
+        {"subject":"myanmar","mark":80},
+        {"subject":"english","mark":90},
+        {"subject":"math","mark":100}
+    ]
+}
