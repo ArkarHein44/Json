@@ -6,7 +6,8 @@
         body{
             height: 100vh;
             display: flex;
-            justify-content: center;
+            flex-direction: column;
+            align-items: center;
         }
         img{
             border-radius:50%;
@@ -57,7 +58,7 @@
         console.log(result.results[0]["name"]["title"],result.results[0] ["name"] ["first"],result.results[0] ["name"] ["last"]);
 
         document.write(`<img src="${result.results[0]["picture"]["large"]}" title="random user picture"/>`)
-
+        document.write(`<h4>${result.results[0]["name"]["title"]+" "+result.results[0] ["name"] ["first"]+" "+result.results[0] ["name"] ["last"]}</h4>`);
     </script>
 </body>
 </html>
