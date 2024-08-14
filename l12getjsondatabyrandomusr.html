@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>HTTP Request by AJAX - Random user</title>
+    <style>
+        body{
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+        }
+        img{
+            border-radius:50%;
+            width: 100px;
+            height: 100px;
+
+            border: 1px solid black;
+            box-shadow: 5px 5px 5px #000;
+
+            cursor: pointer;
+        }
+
+        img:hover{
+            transform: translateY(5px);
+        }
+    </style>
+</head>
+<body>
+    
+
+    
+
+    <script type="text/Javascript">
+        
+        let uri = `https://randomuser.me/api/`;
+
+        //console.log(uri);
+
+        const xmlhttp = new XMLHttpRequest();
+        xmlhttp.open("GET",uri,false);
+        xmlhttp.send();
+
+        // console.log(xmlhttp);
+
+        let result;
+
+        if(xmlhttp.readyState === 4 & xmlhttp.status === 200){
+            result = xmlhttp.responseText;
+        }
+        
+        result = JSON.parse(result);
+        // console.log(result);
+        
+        console.log(result.results);
+        console.log(result.results[0]);
+        console.log(result.results[0].name);
+        console.log(result.results[0].name.title,result.results[0].name.first,result.results[0].name.last);
+        console.log(result.results[0]["name"]["title"],result.results[0] ["name"] ["first"],result.results[0] ["name"] ["last"]);
+
+        document.write(`<img src="${result.results[0]["picture"]["large"]}" title="random user picture"/>`)
+
+    </script>
+</body>
+</html>
+
+<!-- use postman -->
+
+<!-- 14RD -->

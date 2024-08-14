@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>HTTP Request by AJAX</title>
+</head>
+<body>
+    
+
+    
+
+    <script type="text/Javascript">
+        
+        // AJAX ( Asynchronous Javascript and XML )
+
+        let xmlhttp = new XMLHttpRequest();
+
+        xmlhttp.open("GET","l10sampledata.json",false);
+        xmlhttp.send();
+
+        //console.log(xmlhttp);
+
+        let result;
+
+        if(xmlhttp.readyState === 4 && xmlhttp.status === 200){
+
+            // const result = xmlhttp;
+            // console.log(result);
+
+            result = xmlhttp.responseText;
+            // console.log(result);
+            // console.log(typeof result);
+        }
+
+        // console.log(result);
+
+        result = JSON.parse(result);
+        // Dot Notation
+        // Bracket Notation
+
+        console.log(result);
+        console.log(result.weather); // Dot Notation
+        console.log(result.weather[0].main); // Dot Notation
+        console.log(result.weather[0]["main"]); // Bracket Notation
+        
+        console.log(result.wind.speed); // Dot Notation
+        console.log(result.wind["speed"]); // Bracket Notation
+        console.log(result["wind"]["speed"]); // Bracket Notation
+        
+    </script>
+</body>
+</html>
