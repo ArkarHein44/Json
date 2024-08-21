@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Get Data By Chuck Norris</title>
+    <style type="text/css">
+        body{
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+        }
+
+        .container{
+            width: 300px;
+            background-color: #f4f4f4;
+            padding: 10px;
+        }
+
+
+    </style>
+</head>
+<body>
+    
+    <div class="container">
+        <div id="display"></div>
+        <button id="btn" type="button">Load Data</button>
+    </div>
+    
+
+    <script type="text/Javascript">
+        
+        const getdisplay = document.getElementById('display');
+        const getbtn = document.getElementById('btn');
+        
+        getbtn.addEventListener('click',function(){
+            loaddata();
+        });
+
+
+        function loaddata() {
+            const uri = `https://api.chucknorris.io/jokes/random/`;
+            const xmlhttp = new XMLHttpRequest();
+
+            xmlhttp.onreadystatechange = function(){
+                if(xmlhttp.readyState === 4 && xmlhttp.status === 200){
+                    let result = xmlhttp.responseText;
+
+                    result = JSON.parse(result);
+                    console.log(result);
+
+                    let html = `<img src="${result.icon_url}"/> 
+                    <h3>${result.value}</h3>`;
+
+                    getdisplay.innerHTML = html;
+                }
+            }
+
+            xmlhttp.onprogress = function () {
+                console.log("On Progress = " , xmlhttp.readyState,xmlhttp.status); // On Progress = 3 200
+            }
+
+            xmlhttp.onload = function () {
+                console.log("On Load = " , xmlhttp.readyState,xmlhttp.status); // On Load = 4 200
+            }
+
+            xmlhttp.open('GET',uri,true);
+            xmlhttp.send();
+
+        }
+
+       
+    
+       
+        
+
+    </script>
+</body>
+</html>
+<!-- 
+{
+    "icon_url" : "https://api.chucknorris.io/img/avatar/chuck-norris.png",
+    "id" : "7IGjs09JSxu3BlKBhHLi0g",
+    "url" : "",
+    "value" : "When Chuck Norris uses a bathroom, he can stink it out for up to twenty-three years. Many around America's south have been turned into tourist attractions."
+    } -->

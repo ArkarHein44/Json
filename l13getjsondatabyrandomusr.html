@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>HTTP Request by AJAX - Random user</title>
+    <style>
+        body{
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        img{
+            border-radius:50%;
+            width: 100px;
+            height: 100px;
+
+            border: 1px solid black;
+            box-shadow: 5px 5px 5px #000;
+
+            cursor: pointer;
+        }
+
+        img:hover{
+            transform: translateY(5px);
+        }
+    </style>
+</head>
+<body>
+    
+
+    
+
+    <script type="text/Javascript">
+        
+        let uri = `https://randomuser.me/api/`;
+
+        //console.log(uri);
+
+        const xmlhttp = new XMLHttpRequest();
+        xmlhttp.open("GET",uri,true); // true mean synchronize
+        xmlhttp.send();
+
+        // console.log(xmlhttp);
+
+        xmlhttp.onreadystatechange = function(){
+            // console.log("state changed = ", xmlhttp.readystate,xmlhttp.status);
+
+            if(xmlhttp.readyState === 4 && xmlhttp.status === 200){
+                let result = xmlhttp.responseText;
+        
+                result = JSON.parse(result);
+                // console.log(result);
+
+                console.log(result.results);
+                console.log(result.results[0]);
+                console.log(result.results[0].name);
+                console.log(result.results[0].name.title,result.results[0].name.first,result.results[0].name.last);
+                console.log(result.results[0]["name"]["title"],result.results[0] ["name"] ["first"],result.results[0] ["name"] ["last"]);
+
+            }
+        }
+
+        // result Oki
+        // xmlhttp.open("GET",uri,false); // false mean no synchronize
+        // xmlhttp.send();
+
+        
+        
+        
+        
+
+    </script>
+</body>
+</html>
+<!-- 
+=> xmlhttp.onreadystatechange 
+xmlhttp.readyState === 4
+
+0 = UNSENT open() has not been called yet
+1 = OPENED send() has been called
+2 = HEADER_RECEIVED send() has been called. and headers and status are available
+3 = LOADING downloading, responseText hold partial datas
+4 = DONE the operation is completed.
+-->
