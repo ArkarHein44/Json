@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Get Data By AJAX - IP Registry</title>
+    <style type="text/css">
+        body{
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+        }
+
+        .container{
+            width: 300px;
+            background-color: #f4f4f4;
+            padding: 10px;
+        }
+
+
+    </style>
+</head>
+<body>
+    
+    <div class="container">
+        <div id="display"></div>
+        <button id="btn" type="button">Load Data</button>
+    </div>
+    
+
+    <script type="text/Javascript">
+        
+        const getdisplay = document.getElementById('display');
+        const getbtn = document.getElementById('btn');
+        
+        getbtn.addEventListener('click',function(){
+            loaddata();
+        });
+
+
+        function loaddata() {
+            const key = "p9kk103z9mf567tn ";
+            const uri = `https://api.ipregistry.co?key=${key}`;
+            console.log(uri);
+
+            fetch(uri).then(function(response){
+            
+                return response.json();
+            }).then(function(data){
+                console.log(data);
+                console.log(typeof data);
+
+                console.log(data.user_agent["device"]["name"]);
+
+                let html = `
+                    <ul>
+                        <li>External IP = ${data.ip}</li>
+                        <li>Current Device = ${data.user_agent["device"]["name"]}</li>
+                        <li>Operation System = ${data.user_agent["os"]["name"]}</li>
+                        <li>Load By = ${data.user_agent.name}</li>
+                        <li>City = ${data.location.city}</li>
+                        <li>Local Currency = ${data.currency.code}</li>
+                        <li>Time Zone = ${data.time_zone.name}</li>
+                    </ul>
+                `;
+
+                getdisplay.innerHTML = html;
+            }).catch(function(err){
+                console.log(err);
+            });
+
+
+                
+
+        
+
+           
+
+        }
+
+       
+    
+       
+        
+
+    </script>
+</body>
+</html>
+<!-- 
+IP
+
+Local IP
+    (i) Dynamic IP
+    (ii) Fixed IP / Static IP
+
+External IP
+    (i) Public IP / Dynamic IP
+    (ii) Fixed IP / Static IP
+
+-->
+
+<!-- 
+https://api.ipregistry.co?key=p9kk103z9mf567tn
+
+API KEY 
+p9kk103z9mf567tn 
+-->
+
+<!-- 21IP -->

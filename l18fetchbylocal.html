@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Fetch - Local</title>    
+</head>
+<body>
+ 
+
+
+
+    <script type="text/Javascript">
+        
+        // fetch()
+
+        //  ftech(url)
+        //  .then(response=>response.json())
+        //  .then(data)
+        //  catch(err=>console.log(err))
+        
+        const url = "./l10sampledata.json";
+
+        fetch(url).then(function(response){
+            // console.log(response);
+            // console.log(response.status);
+            // console.log(response.json());
+            return response.json();
+        }).then(function(data){
+            console.log(data);
+            console.log(typeof data);
+
+            console.log(data.weather); // Dot Notation
+            console.log(data.weather[0].main); // Dot Notation
+            console.log(data.weather[0]["main"]); // Bracket Notation
+
+            console.log(data.wind.speed); // Dot Notation
+            console.log(data.wind["speed"]); // Bracket Notation
+        
+        }).catch(function(err){
+            console.log(err);
+        });
+
+
+        // Arrow Function
+
+        fetch(url).then(response=>response.json()).then(data=>{
+            console.log(data);
+            console.log(data.wind.speed);
+            console.log(data.wind["speed"]);
+        }).catch(err=>console.log(err));
+
+
+        
+    </script>
+</body>
+</html>
