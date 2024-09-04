@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Get Data By AJAX - IP Registry</title>
+    <style type="text/css">
+        body{
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+        }
+
+        .container{
+            width: 300px;
+            background-color: #f4f4f4;
+            padding: 10px;
+        }
+
+
+    </style>
+</head>
+<body>
+    
+    <div class="container">
+        <div id="display"></div>
+        <button id="btn" type="button">Load Data</button>
+    </div>
+    
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" type="text/Javascript"></script>
+<script type="text/Javascript">
+     
+     const getdisplay = document.getElementById('display');
+        const getbtn = document.getElementById('btn');
+        
+        getbtn.addEventListener('click',function(){
+            loaddata();
+        });
+
+    function loaddata()    {
+ // $.ajax()
+
+    // $.ajax({
+    //     method:'',
+    //     url:url,
+    //     dataType:'json' // text
+    // }).done((data)=>{
+    //     output
+    // }).fail(()=>{
+    //     error 
+    // });
+
+    const key = "p9kk103z9mf567tn";
+    const url = `https://api.ipregistry.co?key=${key}`;
+
+    console.log(url);
+
+    // $.ajax({
+    //     method:"GET",
+    //     url:url,
+    //     dataType:'json' // text
+    // }).done((data)=>{
+    //     console.log(data);
+    //     console.log(typeof data);
+
+    //     console.log(data.user_agent["device"]["name"]);
+
+    //     let html = `
+    //         <ul>
+    //             <li>External IP = ${data.ip}</li>
+    //             <li>Current Device = ${data.user_agent["device"]["name"]}</li>
+    //             <li>Operation System = ${data.user_agent["os"]["name"]}</li>
+    //             <li>Load By = ${data.user_agent.name}</li>
+    //             <li>City = ${data.location.city}</li>
+    //             <li>Local Currency = ${data.currency.code}</li>
+    //             <li>Time Zone = ${data.time_zone.name}</li>
+    //             </ul>
+    //         `;
+
+    //     getdisplay.innerHTML = html;
+    // }).fail(()=>{
+    //     console.log("Error");
+    // });
+
+    // $.ajax({
+    //     method:"GET",
+    //     url:url,
+    //     dataType:'json' // text
+    // });
+
+    // function getdata(data,status,xhr) {
+    //     console.log(data);
+    //     console.log(typeof data);
+
+    //     console.log(data.firstname);
+    //     console.log(data.lastname);
+    //     console.log(data.remark);
+    //     console.log(data.qualify[0]["subject"],data.qualify[0]["mark"]);
+    // }
+
+    // Method 3 ( Short Hand)
+
+    // $.get(url,output);
+
+    // function output(data) {
+    //     console.log(data);
+    //     console.log(typeof data);
+
+    //     console.log(data.user_agent["device"]["name"]);
+
+    //     let html = `
+    //         <ul>
+    //             <li>External IP = ${data.ip}</li>
+    //             <li>Current Device = ${data.user_agent["device"]["name"]}</li>
+    //             <li>Operation System = ${data.user_agent["os"]["name"]}</li>
+    //             <li>Load By = ${data.user_agent.name}</li>
+    //             <li>City = ${data.location.city}</li>
+    //             <li>Local Currency = ${data.currency.code}</li>
+    //             <li>Time Zone = ${data.time_zone.name}</li>
+    //             </ul>
+    //         `;
+
+    //     getdisplay.innerHTML = html;
+    // }
+    
+    // Method 4
+
+    // $.getJSON(url,{
+    //     format:'json' // text
+    // }).done((data)=>{
+    //     output
+    // }).fail(()=>{
+    //     error
+    // }).always(function(){
+    //     your execute codes are here
+    // })
+
+    $.getJSON(url,{
+        format:'json' // text
+    }).done((data)=>{
+        console.log(data);
+        console.log(typeof data);
+
+        console.log(data.user_agent["device"]["name"]);
+
+        let html = `
+            <ul>
+                <li>External IP = ${data.ip}</li>
+                <li>Current Device = ${data.user_agent["device"]["name"]}</li>
+                <li>Operation System = ${data.user_agent["os"]["name"]}</li>
+                <li>Load By = ${data.user_agent.name}</li>
+                <li>City = ${data.location.city}</li>
+                <li>Local Currency = ${data.currency.code}</li>
+                <li>Time Zone = ${data.time_zone.name}</li>
+                </ul>
+            `;
+
+        getdisplay.innerHTML = html;
+    }).fail(()=>{
+        console.log("Error");
+    }).always(function(){
+        console.log("Bye Bye");
+    })        
+    }
+    
+   
+
+
+</script>
+    
+</body>
+</html>
+<!-- 
+IP
+
+Local IP
+    (i) Dynamic IP
+    (ii) Fixed IP / Static IP
+
+External IP
+    (i) Public IP / Dynamic IP
+    (ii) Fixed IP / Static IP
+
+-->
+
+<!-- 
+https://api.ipregistry.co?key=p9kk103z9mf567tn
+
+API KEY 
+p9kk103z9mf567tn 
+-->
+
+<!-- 21IP -->

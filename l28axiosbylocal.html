@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Axios - Local</title>    
+</head>
+<body>
+ 
+
+
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script type="text/Javascript">
+        
+        // => axios
+
+        // axios.get(url)
+        //     .then(callbackfunction)
+        //     .catch(err=>console.log(err));        
+        
+        const url = "./l5simpledata.json";
+
+        axios.get(url).then((response)=>{
+            console.log(response);
+
+            console.log(response.data);
+            console.log(typeof response.data);
+
+            console.log(response.data.firstname);
+            console.log(response.data.lastname);
+            console.log(response.data.remark);
+            console.log(response.data.qualify[0]["subject"],data.qualify[0]["mark"]);
+        }).catch(err=>{
+            console.log(err);
+        });
+
+
+        axios({
+            method:"GET",
+            url:url
+        }).then((response)=>{
+            console.log(response);
+
+            console.log(response.data);
+            console.log(typeof response.data);
+
+            console.log(response.data.firstname);
+            console.log(response.data.lastname);
+            console.log(response.data.remark);
+            console.log(response.data.qualify[0]["subject"],data.qualify[0]["mark"]);
+        }).catch(err=>{
+            console.log(err);
+        });
+
+
+
+
+    </script>
+</body>
+</html>
