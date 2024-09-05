@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Jquery by AJAX - Open Weather Map</title>
+</head>
+<body>
+    
+
+    
+
+
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script type="text/Javascript">
+        
+        const latitude = "21.9916904";
+        const longitude = "96.1062094";
+        // const key = "09e4b5cb6c4b440f0e5753768fb5ad66";
+        const key = "ab97e13f76f324f780bf3244b9c4b672";
+        let url = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${key}`;
+
+         // => axios
+
+        // axios.get(url)
+        //     .then(callbackfunction)
+        //     .catch(err=>console.log(err));   
+        
+        
+        axios.get(url).then((response)=>{
+            console.log(response);
+
+            console.log(response.weather); // Dot Notation
+            console.log(response.weather[0].main); // Dot Notation
+            console.log(response.weather[0]["main"]); // Bracket Notation
+
+            console.log(response.wind.speed); // Dot Notation
+            console.log(response.wind["speed"]); // Bracket Notation
+            console.log(response["wind"]["speed"]); // Bracket Notation
+
+            console.log(response.name); // Mandalay
+            console.log(response["name"]); // Mandal
+            
+        }).catch(err=>{
+            console.log(err);
+        });
+
+
+        axios({
+            method:"GET",
+            url:url
+        }).then((response)=>{
+            console.log(response);
+            console.log(response.weather); // Dot Notation
+            console.log(response.weather[0].main); // Dot Notation
+            console.log(response.weather[0]["main"]); // Bracket Notation
+
+            console.log(response.wind.speed); // Dot Notation
+            console.log(response.wind["speed"]); // Bracket Notation
+            console.log(response["wind"]["speed"]); // Bracket Notation
+
+            console.log(response.name); // Mandalay
+            console.log(response["name"]); // Mandal
+        }).catch(err=>{
+            console.log(err);
+        });
+    </script>
+</body>
+</html>
+
+<!-- use postman -->

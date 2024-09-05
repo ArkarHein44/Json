@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Get Data By Chuck Norris</title>
+    <style type="text/css">
+        body{
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+        }
+
+        .container{
+            width: 300px;
+            background-color: #f4f4f4;
+            padding: 10px;
+        }
+
+
+    </style>
+</head>
+<body>
+    
+    <div class="container">
+        <div id="display"></div>
+        <button id="btn" type="button">Load Data</button>
+    </div>
+    
+
+
+
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script type="text/Javascript">
+        
+        const getdisplay = document.getElementById('display');
+        const getbtn = document.getElementById('btn');
+        
+        getbtn.addEventListener('click',function(){
+            loaddata();
+        });     
+
+
+        // axios.get(url)
+        //     .then(callbackfunction)
+        //     .catch(err=>console.log(err));  
+       
+        function loaddata() {
+            const url = `https://api.chucknorris.io/jokes/random/`;
+
+            // axios.get(url).then((response)=>{
+            //     console.log(response);
+
+            //     let html = `<img src="${response.icon_url}"/> 
+            //                 <h3>${response.value}</h3>`;
+
+            //     getdisplay.innerHTML = html;
+            
+            // }).catch(err=>{
+            //     console.log(err);
+            // })
+
+            axios({
+                method:"GET",
+                url:url
+            }).then((response)=>{
+                console.log(response);
+
+                let html = `<img src="${response.icon_url}"/> 
+                            <h3>${response.value}</h3>`;
+
+                getdisplay.innerHTML = html;
+            
+            }).catch(err=>{
+                console.log(err);
+            })
+        }
+       
+        
+
+    </script>
+</body>
+</html>
+<!-- 
+{
+    "icon_url" : "https://api.chucknorris.io/img/avatar/chuck-norris.png",
+    "id" : "7IGjs09JSxu3BlKBhHLi0g",
+    "url" : "",
+    "value" : "When Chuck Norris uses a bathroom, he can stink it out for up to twenty-three years. Many around America's south have been turned into tourist attractions."
+    } -->

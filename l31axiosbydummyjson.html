@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Get Data By Chuck Norris</title>
+</head>
+<body>
+    
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" type="text/Javascript"></script>
+    <script type="text/Javascript">
+        
+        // $.ajax()
+
+        // $.ajax({
+        //     method:'',
+        //     url:url,
+        //     dataType:'json' // text
+        // }).done((data)=>{
+        //     output
+        // }).fail(()=>{
+        //     error 
+        // });
+
+        const url = "https://dummyjson.com/products";
+
+        // $.ajax({
+        //     method:"GET",
+        //     url:url,
+        //     dataType:'json' // text
+        // }).done((data)=>{
+        //     console.log(data);
+        //     console.log(data);
+        //     data.products.forEach(function(product){
+        //     // console.log(product);
+
+        //     console.log(product.id,product.title,product.price);
+        //     })
+        // }).fail(()=>{
+        //     console.log("Error");
+        // });
+
+        // Method 2
+        
+        // $.ajax({
+        //     method:"GET",
+        //     url:url,
+        //     dataType:'json' // text
+        // });
+
+        // function getdata(data,status,xhr) {
+        //     console.log(data);
+        //     console.log(typeof data);
+
+        //     console.log(data.firstname);
+        //     console.log(data.lastname);
+        //     console.log(data.remark);
+        //     console.log(data.qualify[0]["subject"],data.qualify[0]["mark"]);
+        // }
+
+        // Method 3 ( Short Hand)
+
+        // $.get(url,output);
+
+        // function output(data) {
+        //     console.log(data);
+        //     data.products.forEach(function(product){
+        //     // console.log(product);
+
+        //     console.log(product.id,product.title,product.price);
+        //     })
+        // }
+        
+        // Method 4
+
+        // $.getJSON(url,{
+        //     format:'json' // text
+        // }).done((data)=>{
+        //     output
+        // }).fail(()=>{
+        //     error
+        // }).always(function(){
+        //     your execute codes are here
+        // })
+
+        $.getJSON(url,{
+            format:'json' // text
+        }).done((data)=>{
+            console.log(data);
+            data.products.forEach(function(product){
+            // console.log(product);
+
+            console.log(product.id,product.title,product.price);
+           })
+        }).fail(()=>{
+            console.log("Error");
+        }).always(function(){
+            console.log("Bye Bye");
+        })
+
+        
+    </script>
+</body>
+</html>
