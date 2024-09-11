@@ -48,17 +48,17 @@
         function loaddata() {
             const url = `https://api.chucknorris.io/jokes/random/`;
 
-            // axios.get(url).then((response)=>{
-            //     console.log(response);
+            axios.get(url).then((response)=>{
+                console.log(response);
 
-            //     let html = `<img src="${response.icon_url}"/> 
-            //                 <h3>${response.value}</h3>`;
+                let html = `<img src="${response.data.icon_url}"/> 
+                            <h3>${response.data.value}</h3>`;
 
-            //     getdisplay.innerHTML = html;
+                getdisplay.innerHTML = html;
             
-            // }).catch(err=>{
-            //     console.log(err);
-            // })
+            }).catch(err=>{
+                console.log(err);
+            })
 
             axios({
                 method:"GET",
@@ -66,8 +66,8 @@
             }).then((response)=>{
                 console.log(response);
 
-                let html = `<img src="${response.icon_url}"/> 
-                            <h3>${response.value}</h3>`;
+                let html = `<img src="${response.data.icon_url}"/> 
+                            <h3>${response.data.value}</h3>`;
 
                 getdisplay.innerHTML = html;
             

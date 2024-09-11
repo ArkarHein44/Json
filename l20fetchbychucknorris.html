@@ -41,7 +41,7 @@
         function loaddata() {
             const uri = `https://api.chucknorris.io/jokes/random/`;
 
-            etch(uri).then(function(response){
+            fetch(uri).then(function(response){
 
             console.log(response.json());
             return response.json();

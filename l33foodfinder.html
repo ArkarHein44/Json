@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Food Findery</title>
+    <style type="text/css">
+        body{
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+
+        }
+
+        .container{
+            max-width: 60vw;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        button{
+            font-size: 14px;
+            padding: 8px 10px;
+            margin: 0;
+            cursor: pointer;
+
+        }
+        
+        .displayone{
+            width: 70%;
+        }
+
+        .displayone img{
+            width: 200px;
+            border: 5px solid #ffff;
+        }
+
+        .displayone p{
+            text-align: justify;
+        }
+
+        #header{
+            display: flex;
+            justify-content: start;
+        }
+       
+
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Food Finder</h1>
+        <button type="button" id="randombtn" class="randombtn"> Get Random Food</button>
+
+        <div id="header">
+
+        </div>
+
+        <div id="displayone" class="displayone">
+
+        </div>
+
+    </div>
+   
+
+<script type="text/Javascript">
+
+    // Get UI
+
+    const getrandombtn = document.getElementById('randombtn');
+    const getheader = document.getElementById('header');
+    const getdisplayone = document.getElementById('displayone');
+
+    getrandombtn.addEventListener('click',getrandomfood);
+     
+    function getrandomfood(){
+
+        // console.log('hay');
+        let url = "https://www.themealdb.com/api/json/v1/1/random.php";
+
+        fetch(url)
+        .then(response=>response.json())
+        .then(data=>{
+
+            // console.log(data);
+            // console.log(typeof data); // object
+
+            const food = data.meals[0];
+            foodsettertodom(food);
+
+        })
+        .catch(err=>console.log(err));
+
+        function foodsettertodom(food) {
+            console.log(food);
+            // console.log(food.strMeal);
+            // console.log(food.strInstructions);
+            // console.log(food.strIngredient1);
+            // console.log(food.strMealThumb);
+
+            const ingredients = [];
+
+            for(let x = 1; x <= 20; x++){
+                // console.log(x);
+
+                // ingredients.push(`${food[`strIngredient${x}`]} = ${food[`strMeasure${x}`]}`);
+                // console.log(food[`strIngredient${x}`]);
+
+                if(food[`strIngredient${x}`]){
+                    ingredients.push(`${food[`strIngredient${x}`]} = ${food[`strMeasure${x}`]}`);
+                }
+
+            }
+           
+            // console.log(ingredients);
+
+            getdisplayone.innerHTML = `
+                <h3>${food.strMeal}</h3>
+                <img src="${food.strMealThumb}" alt="${food.strMeal}" />
+                <ul class="list-group">
+                    <li>
+                        <h3>${food.strArea} ${food.strCategory}</h3>
+                    </li>
+                </ul>
+                
+                <div>
+                    <p>${food.strInstructions}</p>
+                    <h3>Main Ingredients</h3>
+                    <ol>
+                    ${ingredients.map(ingredient=>`<li>${ingredient}</li>`).join("")};
+                    </ol>
+                </div>
+                
+            `;
+
+        }
+   
+    }
+    
+
+
+</script>
+    
+</body>
+</html>
+
+<!-- 11FD -->
