@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Scroll Project</title>
+    <style type="text/css">
+    </style>
+    <!-- fontawesome css -->
+    <link rel="stylesheet" href="https://fontawsome.newwaymm.com/fontawesome-pro-6/css/all.min.css" />
+
+    <!-- bootstrap css  -->
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"> -->
+
+    <style type="text/css"> 
+        body{
+            font-family: sans-serif;
+            background-color: #f4f4f4;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            padding: 0;
+            margin: 0;
+        }
+
+        .post{
+            width: 500px;
+            background-color: #fff;
+
+            box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+
+            padding: 20px;
+            margin: 40px 0;
+
+            position: relative;
+        }
+
+        .post .postid{
+            width: 30px;
+            height: 30px;
+            background-color: #000;
+            color: #fff;
+            font-size: 15px;
+            border-radius: 50%;
+
+            position: absolute;
+            right: -15px;
+            bottom: -15px;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .loader{
+            display: flex;
+
+            position: fixed;
+            bottom: 10px;
+            opacity: 0;
+
+        }
+
+        .loader.show{
+            opacity: 1;
+        }
+
+        .triangle{
+            width: 0;
+            height: 0;
+
+            /* background-color: #000; */
+
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            border-top: 10px solid blue;
+
+            margin: 5px;
+
+            animation: myani .5s ease-in-out infinite;
+
+        }
+
+        .triangle:nth-of-type(2){
+            animation-delay: 0.1s;
+        }
+
+        .triangle:nth-of-type(3){
+            animation-delay: 0.2s;
+        }
+
+        @keyframes myani {
+            0%{
+                transform: translateY(0);
+            }
+            50%{
+                transform: translateY(-10px);
+            }
+            100%{
+                transform: translateY(0);
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+
+        <!-- <div class="post">
+
+            <div class="postid">1</div>
+
+            <div class="info">
+
+                <img src="https://randomuser.me/api/portraits/women/53.jpg" alt="" class="" />
+                <h4 class="title">Ms. Su Su</h4>
+                <a href="tel:09123456789" class="content">09123456789</a>
+                <br/>
+                <a href="mailto:susu@gmail.com" class="content">susu@gmail.com</a>
+                <p class="country">Myanmar</p>
+            </div>
+
+        </div>
+
+        <div class="post">
+
+            <div class="postid">2</div>
+
+            <div class="info">
+
+                <img src="https://randomuser.me/api/portraits/women/88.jpg" alt="" class="" />
+                <h4 class="title">Ms. Nu Nu</h4>
+                <a href="tel:09123456789" class="content">09123456789</a>
+                <br/>
+                <a href="mailto:nunu@gmail.com" class="content">nunu@gmail.com</a>
+                <p class="country">Myanmar</p>
+            </div>
+            
+        </div> -->
+
+    </div>
+
+    <div class="loader">
+        <div class="triangle"></div>
+        <div class="triangle"></div>
+        <div class="triangle"></div>
+    </div>
+
+
+
+
+
+
+
+
+<!-- jquery js-->
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" type="text/Javascript"></script>
+
+<!-- axios js-->
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+<!-- bootstrap js  -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script> -->
+
+<!-- custom js start here  -->
+<script type="text/Javascript">
+    // console.log("%c Hi","color:red");
+
+    const getcontainer = document.querySelector('.container');
+    const loading = document.querySelector('.loader');
+
+    // console.log(getcontainer,loading);
+
+    let page = 1;
+    const limit = 5;
+    let x= 0;
+
+    // const url = `https://randomuser.me/api/?page=${page}&results=${limit}&seed=abc`;
+
+    async function getposts() {
+        
+        const url = `https://randomuser.me/api/?page=${page}&results=${limit}&seed=abc`;
+
+        await fetch(url).then(response=>{
+            return response.json();
+        }).then(data=>{
+            //console.log(data);
+            posts = data.results;
+            // console.log(posts);
+        }).catch(err=>{
+            console.log(err);
+        });
+
+        return posts;
+    }
+
+    // console.log(getposts());
+
+    async function showposttodom(){
+
+        const getusers = await getposts();
+        console.log(getusers);
+
+        getusers.forEach((getuser,idx)=>{
+
+            const newdiv = document.createElement("div");
+            newdiv.classList.add("post");
+
+
+            newdiv.innerHTML = `
+            
+                <div class="postid">${++x}</div>
+
+                <div class="info">
+
+                    <img src="${getuser.picture.large}" alt="${getuser.name.first}" class="" />
+                    <h4 class="title">${getuser.name.title}.${getuser.name.first} ${getuser.name.last}</h4>
+                    <a href="tel:${getuser.phone}" class="content">${getuser.phone}</a>
+                    <br/>
+                    <a href="mailto:${getuser.email}" class="content">${getuser.email}</a>
+                    <p class="country">${getuser.location.country}</p>
+                </div>
+
+            `;
+
+            getcontainer.appendChild(newdiv);
+
+        });
+
+        
+    }
+
+
+    showposttodom();
+
+    window.addEventListener('scroll',()=>{
+        //console.log(document.documentElement.scrollTop);
+        //console.log(document.documentElement.clientHeight);
+        //console.log(document.documentElement.scrollHeight);
+
+        const {scrollTop, clientHeight, scrollHeight} = document.documentElement;
+        console.log(scrollTop, clientHeight, scrollHeight);
+
+        if((scrollTop + clientHeight) >= scrollHeight-8){
+            //console.log('hay');
+
+            showloading();
+        }
+
+    })
+
+    function showloading(){
+        loading.classList.add('show');
+
+        setTimeout(() => {
+            loading.classList.remove('show');
+            page++;
+            showposttodom();
+        }, 500);
+    }
+    
+    // showloading();
+
+
+</script>
+    
+</body>
+</html>
+
+
+<!-- 9PT -->
