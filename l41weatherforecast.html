@@ -14,6 +14,7 @@
      <style type="text/css">
 
         body{
+            height: 100vh;
             font-family: sans-serif;
             background-color: #f4f4f4;
 
@@ -27,7 +28,7 @@
 
         .content{
             display: flex;
-            justify-content: center;
+            justify-content: space-between;
 
             margin-bottom: 30px;
         }
@@ -45,11 +46,12 @@
             text-align: center;
             display: flex;
             justify-content: space-between;
+
             flex-wrap: wrap;
         }
 
         .forecast img{
-            width: 60px;
+            width: 60px; 
         }
 
         .forecast .otherday{
@@ -58,6 +60,7 @@
 
         .forecast .temperature{
             font-size: 20px;
+            
         }
      </style>
 
@@ -92,19 +95,21 @@
                                 <p class="pressure">Pressure : <span class="predata">1050</span> hpa</p>
 
                             </div>
-
-                            <div class="temperature">
-                                <span class="temdata">+35</span> &deg;C
-                            </div>
                         </div>
 
-                        <div class="forecast">
-                            <div>
-                                <img src="https://openweathermap.org/img/wn/10n@2x.png" alt="icon" />
-                                <h3 class="otherday">getdayname</h3>
-                                <p class=""><span class="othertemdata">+20</span> &deg;C</p>
-                            </div>
-                        </div>
+                        <div class="temperature">
+                            <span class="temdata">+35</span> &deg;C
+                        </div>                           
+                            
+                    </div>
+
+                    <div class="forecast">
+                            
+                    </div>
+
+                        
+
+                       
 
                     </div>
                 </div>
@@ -133,15 +138,15 @@
     const getwind = document.querySelector('.wind > .winddata');
     const getpressure = document.querySelector('.pressure > .predata');
     const gettemperature = document.querySelector('.temperature > .temdata');
-    const getforecast = document.querySelector('.forecast');
+    const getuiforecast = document.querySelector('.forecast');
 
     let city = 'Yangon';
 
     const key = "ab97e13f76f324f780bf3244b9c4b672";
     // let weatherurl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${key}`;
 
-    let weatherurl = `https://api.openweathermap.org/data/2.5/weather?units=metric&appid=${key}&q=yangon`;
-    let forecasturl = `https://api.openweathermap.org/data/2.5/forecast?units=metric&appid=${key}&q=yangon`;
+    let weatherurl = `https://api.openweathermap.org/data/2.5/weather?units=metric&appid=${key}`;
+    let forecasturl = `https://api.openweathermap.org/data/2.5/forecast?units=metric&appid=${key}`;
 
     getform.addEventListener('submit', function (e) {
         e.preventDefault();
@@ -155,14 +160,115 @@
         getsearch.focus();
     });
 
-    let weatherbycity = async (city)=>{
-        console.log(city);
+    let getweatherbycityname = async function (city) {
+        let url = `${weatherurl}&q=${city}`;
+        // console.log(url);
+
+        let response = await fetch(url);
+        // console.log(response);
+
+        if(response.status !== 200){
+            alert('No Result !');
+            return;
+        }
+
+        let data = await response.json();
+        // console.log(data);
+
+        return data;
+        
     }
+
+    let weatherbycity = async (city)=>{
+        // console.log(city);
+
+        let response = await getweatherbycityname(city);
+
+        getweathertodom(response);
+
+        const cityid = response.id;
+
+        let fivedaysforecast = await getforecastbycityid(cityid);
+        getforecasttodom(fivedaysforecast);
+    }
+
+    let getforecastbycityid = async function (cityid) {
+        
+        let url = `${forecasturl}&id=${cityid}`;
+        //console.log(url);
+
+        let response = await fetch(url);
+
+        let data = await response.json();
+        //console.log(data);
+
+        let forecastlists = data.list;
+        console.log(forecastlists);
+
+        let comingdatas = [];
+
+        forecastlists.forEach(forecastlist=>{
+            // console.log(forecastlist);
+
+            let date = new Date(forecastlist.dt_txt);
+            // console.log(date);
+
+            let hours = date.getHours();
+            // console.log(hours);
+
+            if(hours === 12){
+                comingdatas.push(forecastlist);
+            }
+        });
+
+        // console.log(comingdatas);
+
+        return comingdatas;
+    }
+
+    let getweathertodom = (data)=>{
+        console.log(data);
+
+        getcity.textContent = `${data.name} , ${data.sys.country}`;
+        getdayname.textContent = `coming`;
+        gethumidity.textContent = data.main.humidity;
+        getwind.textContent = data.wind.speed;
+        getpressure.textContent = data.main.pressure;
+        gettemperature.textContent = data.main.temp > 0 ? `+${data.main.temp}` : `-${data.main.temp}`;
+    }
+
+    
+    let getforecasttodom = (forecasts)=>{
+        // console.log(forecasts[0].main.temp);
+
+        getuiforecast.innerHTML = "";
+
+        
+        forecasts.forEach((forecast)=>{
+            let temperature = forecast.main.temp > 0 ? `+${Math.round(forecast.main.temp)}` : `-${Math.round(forecast.main.temp)}`;
+
+            let html = `
+                <div>
+                    <img src="https://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png" alt="icon" />
+                    <h3 class="otherday">getdayname</h3>
+                    <p class=""><span class="othertemdata">${temperature}</span> &deg;C</p>
+                </div>
+            `;
+
+            getuiforecast.insertAdjacentHTML("beforeend",html);
+
+        });
+    }  
 
 </script>
     
 </body>
 </html>
+<!-- 
+beforebegin
+beforeend   fistin firstout
+afterbegin  firstin lastout
+afterend    firstin lastout
+ -->
 
-
-
+<!-- 30BB -->
