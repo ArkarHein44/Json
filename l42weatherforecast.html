@@ -269,10 +269,10 @@
           // console.log('ts',Date.now()); // milisecond
           // console.log('dt',forecast.dt); // second
 
-          // 1 Day = 86400 seconds 
-          let dayname = dayofweek(forecast.dt*1000);
-          // console.log(dayname);
+          const daynames = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+          const getday = new Date(forecast.dt_txt).getDay();
 
+          console.log(getday);
 
 
           let temperature =
@@ -305,3 +305,5 @@ beforeend firstin firstout
 afterbegin firstin lastout
 afterend firstin lastout 
 -->
+
+<!-- 6FC -->
