@@ -33,11 +33,79 @@
      <ul>
         <li>Click leftside bar "Project Overview" > Project Settings > You can see your app code</li>
      </ul>
+     <hr />
+
+     <h4>Setting Up Firebase VIA NPM ( Javascript Node)</h4>
+     
+     <a href="https://nodejs.org/en/download/package-manager">Download Node js(https://nodejs.org/en)</a>
 
     
-    
-    
+    <h5>For Ubuntu</h5>
+    <b>Need to install nvm (Node Version Manager)</b>
+    <pre>
+        <code>
+sudo apt update
+sudo apt upgrade -y
 
+sudo apt install crul
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.0/install.sh 
+nvm --version // 0.35.3
+
+nvm install 22
+or
+sudo apt-get install nodejs
+
+sudo apt-get install npm 
+
+check version = node -v // v22.3.0
+check version = npm -v // 10.8.1            
+        </code>
+    </pre>
+
+    <hr />
+    <h4>Nodemon (auto restart after save)</h4>
+    (before = just for knowledge why we need nodemon)
+<pre>
+    <code>
+ctl+S
+ctl+c
+node server.js
+
+ctl+s
+rs
+
+(after = nodemon)
+nodemon server.js
+ctl+s
+    </code>
+</pre>
+    
+    <h5>install</h5>
+    <span>npm install -g nodemon</span>
+
+    <h5>Specific Project (optional)</h5>
+    <span>npm install --save-dev nodemon</span>
+
+    <h5>Using nodemon</h5>
+    <span>nodemon server.js</span> 
+
+    <h5>Add nodemon to package.json (optional)</h5>
+<pre>
+    <code>
+"script":{
+    "start":"node server.js",
+    "dev":"nodemon server.js"
+}
+Then you can run nodemon with:
+npm run dev 
+    </code>
+</pre>
+    <span>websock sockio pusher</span>
+<h5>check nodemon version</h5>
+<span>nodemon -v // 3.1.7</span>
+<br />
+<a href="https://www.npmjs.com/package/nodemon">Nodemon</a> 
+    
 </body>
 </html>
 
