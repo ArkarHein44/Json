@@ -35,14 +35,29 @@
 //     age:40
 // });
 
+// addDoc(collection(db,"users"),{
+//     name:"kyaw kyaw",
+//     city:"Bago",
+//     age:35
+// }).then(docRef=>{
+//     console.log(docRef.id);
+// }).catch(error=>{
+//     console.log(error);
+// });
+
 addDoc(collection(db,"users"),{
-    name:"su su",
-    city:"Yangon",
-    age:20
+  name:"Aye Maung",
+  city:"mandalay",
+  age:45
 }).then(docRef=>{
-    console.log(docRef.id);
+  console.log(docRef.id);
 }).catch(error=>{
-    console.log(error);
+  console.log(error);
 });
+
+
+
+// Error for writing (PERMISSION_DENIED)
+// Rules > allow read, write: if true; > Publish
 
 // gmail
