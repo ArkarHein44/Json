@@ -1,0 +1,18 @@
+{
+  "name": "l11cdnjstodolist",
+  "version": "1.0.0",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node firebase.js",
+    "dev": "nodemon firebase.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "firebase": "^11.0.2"
+  },
+  "type": "module"
+}
