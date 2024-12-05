@@ -1,7 +1,7 @@
 
 import { initializeApp } from "firebase/app";
 
-import { getFirestore, getDoc, doc} from 'firebase/firestore/lite';
+import { getFirestore, getDoc, doc, onSnapshot} from 'firebase/firestore/lite';
 
 const firebaseConfig = {
   apiKey: "AIzaSyC1Et6-DdxEK6objMVLtDR9r8jvB2jt5M4",
@@ -17,6 +17,9 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 // console.log(db);
 
+// getDoc (for Single data by id)
+// getDocs (for multi data need reload)
+
 const dbRef = doc(db,"products","myid1002");
 const getdata = await getDoc(dbRef);
 
@@ -26,3 +29,20 @@ console.log(getdata.data().name);  // speed
 console.log(getdata.data().price); // 500
 console.log(getdata.data().type);  //food
 
+// => onSnapshot (live result)
+
+const getresults = async ()=>{
+  await onSnapshot(dbRef, docSnap=>{
+    // console.log(docSnap);
+
+    console.log(docSnap.data());
+    console.log(docSnap.data().name);
+    console.log(docSnap.data().price);
+    console.log(docSnap.data().type);
+
+
+  });
+
+};
+
+getresults();
