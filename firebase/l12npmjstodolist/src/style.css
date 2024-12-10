@@ -105,3 +105,10 @@ small{
 	font-family: FontAwesome;
     float: right;
 }
+
+.time{
+    font-size: 12px;
+    color: gray;
+}
+
+/* 10VTB */

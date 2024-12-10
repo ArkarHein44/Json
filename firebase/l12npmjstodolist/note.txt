@@ -1,0 +1,34 @@
+// https://firebase.google.com/ > Docs > Overview > Firebase fundamentals > Web icon > Available
+
+// npm init or npm init -y
+// npm install firebase or npm install firebase@lastest
+// npm install express or npm install express@lastest
+
+=> How to use Vite
+1. Install Vite (only vite not react and typescript)
+	npm install --save-dev vite 
+
+2. Create a new file as vite.config.js file
+	import { defineConfig } from 'vite';
+
+	export default defineConfig({
+		root:'./src',
+		build:{
+			outDir:'../dist', // define the output directory, the output directory for building 
+		}
+	});
+
+3. Update package.json	
+	"scripts": {
+		"dev" : "vite",
+	  	"build" : "vite build"
+  	}
+
+4. Run Build the app for production
+	npm run Build
+
+5. Run Vite in developnment server
+	npm run dev
+
+
+// 10A 

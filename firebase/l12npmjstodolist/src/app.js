@@ -1,4 +1,4 @@
-import { getFirestore, collection, addDoc, getDoc, updateDoc, deleteDoc, doc, onSnapshot } from 'https://www.gstatic.com/firebasejs/11.0.2/firebase-firestore.js';
+import { getFirestore, collection, addDoc, getDoc, updateDoc, deleteDoc, doc, onSnapshot, Timestamp } from 'firebase/firestore';
 
 const db = getFirestore();
 const dbRef = collection(db, "mytasks");
@@ -68,8 +68,12 @@ getdatas();
 
 const showtaskstodom = (taskarrs)=>{
 	getul.innerHTML = '';
+	// console.log(taskarrs);
 
 	taskarrs.forEach(task=>{
+		// console.log(task);
+		const whenago = dateFns.formatDistance(task.created_at.toDate(),new Date(),{addSuffix:true}); // {addSuffix:true} = ago
+		
 		const li = document.createElement('li');
 
 		if(task.done){
@@ -81,6 +85,7 @@ const showtaskstodom = (taskarrs)=>{
 		li.classList.add("list-group-item");
 
 		li.innerHTML += `
+				<span class="time">${whenago}</span>
 				<div class="action">
 					<button type="button" class="edit-btn"><i class="fas fa-edit"></i></button>
 					<button type="button" class="delete-btn"><i class="fas fa-trash-alt"></i></button>
@@ -96,9 +101,11 @@ const showtaskstodom = (taskarrs)=>{
 async function addnew() {
 	const todotext = gettextbox.value;
 	// console.log(todotext);
-
+	const now = new Date();
 	if(gettextbox.getAttribute('task-id')){
 		// Update data
+
+		
 
 		const dbRef = doc(db, "mytasks", gettextbox.getAttribute('task-id'));
 
@@ -119,9 +126,11 @@ async function addnew() {
 	}else{
 		// Create Data
 
+
 		try{
 			await addDoc(dbRef,{
 				todo:todotext,
+				created_at:Timestamp.fromDate(now),
 				done: false
 			});
 
