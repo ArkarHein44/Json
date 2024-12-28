@@ -64,9 +64,9 @@
 
         <div class="mt-8 space-y-5">
 
-            <div class="chhatroom">
+            <div class="chatrooms">
 
-                <button type="button"
+                <button type="button" id="general"
                 class="w-full flex items-center border-b px-5 py-2 gap-x-3.5 transition-colors duration-300 hover:bg-gray-400 focus:outline-none"
             >
                 <img
@@ -83,7 +83,7 @@
                 </div>
                 </button>
 
-                <button type="button"
+                <button type="button" id="information" 
                 class="w-full flex items-center border-b px-5 py-2 gap-x-3.5 transition-colors duration-300 hover:bg-gray-400 focus:outline-none">
                 <img
                 src="images/information.png"
@@ -99,7 +99,7 @@
                 </div>
                 </button> 
 
-                <button type="button"
+                <button type="button" id="laravel" 
                     class="w-full flex items-center border-b px-5 py-2 gap-x-3.5 transition-colors duration-300 hover:bg-gray-400 focus:outline-none"
                 >
                     <img
@@ -116,7 +116,7 @@
                     </div>
                 </button> 
 
-                <button type="button"
+                <button type="button" id="reactjs" 
                     class="w-full flex items-center border-b px-5 py-2 gap-x-3.5 transition-colors duration-300 hover:bg-gray-400 focus:outline-none"
                 >
                     <img
@@ -133,7 +133,7 @@
                     </div>
                 </button>
 
-                <button type="button"
+                <button type="button" id="nodejs" 
                     class="w-full flex items-center border-b px-5 py-2 gap-x-3.5 transition-colors duration-300 hover:bg-gray-400 focus:outline-none"
                 >
                     <img
@@ -150,7 +150,7 @@
                     </div>
                 </button>
 
-                <button type="button"
+                <button type="button" id="python" 
                 class="w-full flex items-center border-b px-5 py-2 gap-x-3.5 transition-colors duration-300 hover:bg-gray-400 focus:outline-none"
             >
                 <img
@@ -174,7 +174,7 @@
             <form action="" method="" class="my-3 user-form">
                 <input type="text" name="username" id="username" class="block w-full border border-gray-300 focus:outline-none px-4 py-2" placeholder="User Name" required />
 
-                <span class="text-gray-600 text-sm msg">name updated to aung aung</span>
+                <span class="text-gray-600 text-sm msg"></span>
 
             </form>
 
@@ -183,8 +183,13 @@
       </div>
 
       <div class="w-full h-screen bg-white border-l px-5 py-8">
+
+        <div class="bg-slate-200 px-4 py-3  text-blue-600">
+          <h6 class="roomtitle">Room Title</h6>
+        </div>
+
         <div class="chatcontainer mt-12 overflow-y-auto">
-            <ul class="h-[85vh] chat-ul space-y-5 overflow-y-auto">
+            <ul class="h-[80vh] chat-ul space-y-5 overflow-y-auto">
                 <!-- <li class="shadow-lg rounded-lg py-2 px-4">
                     <div class="flex justify-between">
                         <h5 class="text-gray-600 font-medium text-sm">Guest</h5>
