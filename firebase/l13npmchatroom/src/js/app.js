@@ -17,6 +17,9 @@ userform.username.placeholder = getlocalname ? `user name is ${getlocalname}` : 
 const chatroom = Chatroom("general", getlocalname);
 roomtitle.textContent = "General";
 
+// LiElements instance 
+const domli = LiElements(chatul);
+
 // Start Chat 
 chatform.addEventListener('submit', (e)=>{
     e.preventDefault();
@@ -52,6 +55,10 @@ chatrooms.addEventListener('click', (e)=>{
     //console.log(getbtn);
 
     if(getbtn){
+
+        // restli , clear all previous lists
+        domli.resetli();
+
         const getroomid = getbtn.getAttribute('id');
         //console.log(getroomid);
 
@@ -61,11 +68,17 @@ chatrooms.addEventListener('click', (e)=>{
 
         // update chat room 
         chatroom.updateChatroom(getroomid);
+
+        // fetch Get Chats 
+        chatroom.getChats((data)=>{
+            domli.newli(data);
+        });
+
     }
 
 });
 
 // Get Chats 
 chatroom.getChats((data)=>{
-    return data;
+    domli.newli(data);
 });

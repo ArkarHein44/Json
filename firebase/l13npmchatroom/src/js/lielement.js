@@ -1,4 +1,4 @@
-export function LiElements(){
+export function LiElements(chatul){
     const newli = (data)=>{
         
         const whenago = dateFns.formatDistance(data.created_at.toDate(),new Date(),{addSuffix:true}); // {addSuffix:true} = ago
@@ -10,14 +10,18 @@ export function LiElements(){
                     <i class="text-gray-300 text-sm">${whenago}</i>
                 </div>
 
-                <p class="text-gray-600 text-sm">${data.nessage}</p>
+                <p class="text-gray-600 text-sm">${data.message}</p>
             </li>
         `;
 
         chatul.innerHTML += html;
     }
 
-    return {newli};
+    const resetli = ()=>{
+        chatul.innerHTML = "";
+    }
+
+    return {newli, resetli};
 }
 
 

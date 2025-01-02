@@ -7,6 +7,7 @@ export function Chatroom(room, username){
     let curroom = room;
     let curuser = username;
     const dbRef = collection(db, 'chats');
+    let unsubscribe = null;
 
 
     const addChat = async (message)=>{
@@ -30,16 +31,40 @@ export function Chatroom(room, username){
 
     const getChats = (callback)=>{
 
-        onSnapshot(
+        // onSnapshot(
+        //     query(dbRef, where('room', '==', curroom), orderBy('created_at'))
+        //     ,docSnap=>{
+		
+		// 	docSnap.forEach(doc=>{
+        //         // console.log(doc);
+        //         callback(doc.data());
+	
+		// 	});
+			
+		// });
+
+        // if(unsubscribe){
+        //     unsubscribe();
+        // }
+
+        if(unsubscribe) unsubscribe();
+
+        unsubscribe = onSnapshot(
             query(dbRef, where('room', '==', curroom), orderBy('created_at'))
             ,docSnap=>{
 		
-			docSnap.forEach(doc=>{
-                console.log(doc);
+			docSnap.docChanges().forEach(item=>{
+                // console.log(item.doc.data());
+                // callback(item.data());
+
+                if(item.type === "added"){
+                    callback(item.doc.data());                }
 	
 			});
 			
 		});
+
+        // console.log(unsubscribe);
     }
 
     const updateChatroom = (newroom)=>{
