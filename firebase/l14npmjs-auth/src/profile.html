@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Profile</title>
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+
+    <link rel="stylesheet" href="./css/style.css" type="text/css">
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="bg-gray-100 flex justify-center items-center mt-12">
+   
+    <div class="w-full max-w-md shadow-md rounded-md p-6">
+        <h6 class="text-lg mb-4">Profile Page</h6>
+
+        <div id="userinfo" class="text-sm space-y-4">
+            <img src="https://static.thenounproject.com/png/65476-200.png" alt="profile icon" width="80" />
+            <p>UID : 0123456789</p>
+            <p>Display Name : Kyaw Kyaw</p>
+            <p>Email : kyawkyaw@gmail.com</p>
+            <p>Create At : 2nd Jan 2025</p>
+        </div>
+
+        <div class="flex justify-end">
+            <button type="button" id="logoutbtn" class="bg-red-600 text-white text-sm rounded-md hover:bg-red-700 focus:outline-none p-2">Logout</button>
+        </div>
+        
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/date-fns@3.6.0/cdn.min.js"></script>
+    <script src="./js/authprofileapp.js" type="module"></script>
+  </body>
+</html>

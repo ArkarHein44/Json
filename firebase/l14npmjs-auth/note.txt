@@ -30,5 +30,7 @@
 5. Run Vite in developnment server
 	npm run dev
 
+...............................................
+6. How to install Tailwind Css
 
-// 10A 
+...............................................

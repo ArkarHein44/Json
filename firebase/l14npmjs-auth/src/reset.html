@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Reset Password</title>
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+
+    <link rel="stylesheet" href="./css/style.css" type="text/css">
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="h-screen bg-gray-100 flex justify-center items-center">
+   
+    <div class="w-full max-w-md shadow-md rounded-md p-6">
+        <h6 class="text-lg mb-4">Reset Password</h6>
+
+        <form action="" id="resetpasswordform" class="space-y-4" method="POST">
+           
+            <div class="flex flex-col">
+                <label for="resetemail" class="text-sm">Email</label>
+                <input type="email" id="resetemail" class="border border-gray-300 text-sm rounded-md focus:outline-none focus:border-blue-500 px-3 py-2 mt-1" placeholder="Email" required />
+            </div>
+
+            <div class="flex justify-end">
+                <button type="submit" class="bg-blue-600 text-white text-sm rounded-md hover:bg-blue-700 focus:outline-none p-2">Reset Password</button>
+            </div>
+        </form>
+
+        <p id="msg" class="text-sm"></p>
+        <div class="mt-4">
+            <a href="./signin.html" class="block text-blue-600 text-sm hover:underline">Already register! Signin here</a>
+        </div>
+        
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/date-fns@3.6.0/cdn.min.js"></script>
+    <script src="./js/authresetpasswordapp.js" type="module"></script>
+  </body>
+</html>
