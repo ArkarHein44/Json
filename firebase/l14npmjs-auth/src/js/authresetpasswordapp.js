@@ -5,6 +5,7 @@ import { Authorize  } from "./authorize.js";
 const resetpasswordform = document.getElementById('resetpasswordform');
 const msg = document.getElementById('msg');
 // console.log(msg);
+
 // Register
 resetpasswordform.addEventListener('submit',(e)=>{
     e.preventDefault();
@@ -13,6 +14,6 @@ resetpasswordform.addEventListener('submit',(e)=>{
     // console.log(resetemail);
 
     const {resetPassword} = Authorize();
-    resetPassword(resetemail);
+    resetPassword(resetemail, msg);
 
 });
