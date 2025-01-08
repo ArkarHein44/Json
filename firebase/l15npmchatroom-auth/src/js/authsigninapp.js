@@ -1,5 +1,5 @@
 import { Authorize  } from "./authorize.js";
-import "@fortawesome/fontawesome-fre/css/all.min.css";
+import "@fortawesome/fontawesome-free/css/all.min.css";
 
 // UI
 const signupform = document.getElementById('signupform'); 

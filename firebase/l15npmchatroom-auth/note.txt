@@ -31,6 +31,13 @@
 	npm run dev
 
 ...............................................
+=> install Expres 
+npm install express or npm install express@lastest
+
+nodemon server.js 
+
+import express from 'express';
+...............................................
 install Fontawesome 6
 1.install 
 npm install @fortawesome/fontawesome-free
@@ -110,5 +117,20 @@ you can Customize the Password reset email link to redirected user to a specific
 Authentication > Templates > Password reset > click Edit pen icon 
 
 ...............................................
+=> Deploy on Cloud Server 
+1. your project need Repo public/private to Github
 
-5NT
+2. signin your account too https://render.com
+
+3. Prepare the build output 
+	your project must builded and typically located in the "dist" directory
+
+4. Create a new static site
+	Click > " new + " > Static site > Github > your account > choose repo > click connect 
+
+5. Name: publicchatroom
+	Branch:main/ master 
+	Build Command: npm run build (React, Vue, Vite, etc ...)
+
+6.	Enviroment Variables = copy paste env data to Enviroment Variables
+

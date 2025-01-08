@@ -1,0 +1,1 @@
+import{A as m}from"./authorize-C8DgjCij.js";/* empty css             */const r=document.getElementById("resetpasswordform"),o=document.getElementById("msg");r.addEventListener("submit",e=>{e.preventDefault();const t=document.getElementById("resetemail").value.trim(),{resetPassword:s}=m();s(t,o)});

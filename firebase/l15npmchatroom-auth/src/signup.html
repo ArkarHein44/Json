@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign Up</title>
+    <link rel="stylesheet" ref="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+    <link rel="stylesheet" href="./css/style.css" type="text/css">
+    <link rel="stylesheet" href="./css/main.css" type="text/css" />
+    <!-- <script src="https://cdn.tailwindcss.com"></script> -->
+  </head>
+  <body class="h-screen bg-gray-100 flex justify-center items-center">
+   
+    <div class="w-full max-w-md shadow-md rounded-md p-6">
+        <h6 class="text-lg mb-4">Signup</h6>
+
+        <form action="" id="signupform" class="space-y-4" method="POST">
+            <div class="flex flex-col">
+                <label for="fullname" class="text-sm">Full Name</label>
+                <input type="text" id="fullname" class="border border-gray-300 text-sm rounded-md focus:outline-none focus:border-blue-500 px-3 py-2 mt-1" placeholder="Full Name" required />
+            </div>
+
+            <div class="flex flex-col">
+                <label for="email" class="text-sm">Email</label>
+                <input type="email" id="email" class="border border-gray-300 text-sm rounded-md focus:outline-none focus:border-blue-500 px-3 py-2 mt-1" placeholder="Email" required />
+            </div>
+
+            <div class="flex flex-col">
+                <label for="password" class="text-sm">Password</label>
+                <input type="password" id="password" class="border border-gray-300 text-sm rounded-md focus:outline-none focus:border-blue-500 px-3 py-2 mt-1" placeholder="Password" required />
+            </div>
+
+            <div class="flex justify-end">
+                <button type="submit" class="bg-blue-600 text-white text-sm rounded-md hover:bg-blue-700 focus:outline-none p-2">Sign up</button>
+            </div>
+        </form>
+
+        <div class="mt-4">
+            <a href="./signin.html" class="block text-blue-600 text-sm hover:underline">Already register! Signin here</a>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/date-fns@3.6.0/cdn.min.js"></script>
+    <script src="./js/authsignupapp.js" type="module"></script>
+  </body>
+</html>

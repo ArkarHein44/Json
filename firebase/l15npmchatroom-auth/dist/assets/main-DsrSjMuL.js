@@ -1,0 +1,10 @@
+import{c as y,d as w,T as C,a as x,o as S,q as b,b as v,w as q}from"./authorize-C8DgjCij.js";import"./authcheck-qNrGN57T.js";/* empty css                */function D(e,t){let r=e,o=t;const s=y(w,"chats");let n=null;return{addChat:async a=>{const u=new Date,l={username:o,room:r,message:a,created_at:C.fromDate(u)};try{return await x(s,l)}catch{throw console.log("Error addChat = ",err),err}},getChats:a=>{n&&n(),n=S(b(s,q("room","==",r),v("created_at")),u=>{u.docChanges().forEach(l=>{l.type==="added"&&a(l.doc.data())})})},updateChatroom:a=>{r=a},updateUsername:a=>{o=a,localStorage.setItem("username",o)}}}function T(e){return{newli:o=>{const s=formatDistance(o.created_at.toDate(),new Date,{addSuffix:!0}),n=`
+            <li class="shadow-lg rounded-lg py-2 px-4">
+                <div class="flex justify-between">
+                    <h5 class="text-gray-600 font-medium text-sm">${o.username}</h5>
+                    <i class="text-gray-300 text-sm">${s}</i>
+                </div>
+
+                <p class="text-gray-600 text-sm">${o.message}</p>
+            </li>
+        `;e.innerHTML+=n},resetli:()=>{e.innerHTML=""}}}const E=document.querySelector(".chatrooms"),L=document.querySelector(".chat-ul"),d=document.querySelector(".chat-form"),c=document.querySelector(".user-form"),g=document.querySelector(".msg"),p=document.querySelector(".roomtitle"),i=localStorage.username?localStorage.username:"Guest";c.username.placeholder=i?`user name is ${i}`:"";const m=D("general",i);p.textContent="General";const h=T(L);d.addEventListener("submit",e=>{e.preventDefault();const t=d.message.value.trim();m.addChat(t).then(()=>d.reset()).catch(r=>console.log(r))});c.addEventListener("submit",e=>{e.preventDefault();const t=c.username.value.trim();m.updateUsername(t),c.reset(),g.innerText=`New name updated to ${t}`,c.username.placeholder=`username is ${t}`,setTimeout(()=>g.innerText="",3e3)});E.addEventListener("click",e=>{e.preventDefault();const t=e.target.closest("button");if(t){h.resetli();const r=t.getAttribute("id"),o=t.querySelector("h3").innerText;p.textContent=o,m.updateChatroom(r),m.getChats(s=>{h.newli(s)})}});m.getChats(e=>{h.newli(e)});
