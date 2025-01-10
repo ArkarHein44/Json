@@ -5,17 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Chat Room</title>
 
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
-      integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
-
-    <link rel="stylesheet" href="./css/style.css" type="text/css">
-    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- auth check  -->
     <script src="./js/authcheck.js" type="module"></script> 
+    
+    <link rel="stylesheet" href="./css/style.css" type="text/css">
+    <link rel="stylesheet" href="./css/main.css" type="text/css">
+    
   </head>
 
   <body>
@@ -84,9 +79,7 @@
                 </div>
                 </button>
 
-                <div>
-                  <a href="./profile.html" class="block text center w-full bg-slate-500 text-white text-sm hover:bg-slate-700 py-1">Profile</a>
-                </div>
+                
                 <button type="button" id="information" 
                 class="w-full flex items-center border-b px-5 py-2 gap-x-3.5 transition-colors duration-300 hover:bg-gray-400 focus:outline-none">
                 <img
@@ -170,9 +163,12 @@
                 <p class="text-xs text-gray-500">public</p>
                 </div>
                 </button>
-                
-
                
+            </div>
+
+            <div>
+              <a href="./profile.html"
+                  class="block text-center w-full bg-slate-500 text-white text-sm hover:bg-slate-700 py-1">Profile</a>
             </div>
 
             <form action="" method="" class="my-3 user-form">
@@ -228,7 +224,6 @@
       </div>
     </aside>
 
-    <script src="https://cdn.jsdelivr.net/npm/date-fns@3.6.0/cdn.min.js"></script>
     <script src="./js/firebase.js" type="module"></script>
     <script src="./js/chat.js" type="module"></script>
     <script src="./js/lielement.js" type="module"></script>

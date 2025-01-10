@@ -1,4 +1,3 @@
-import { doc } from "firebase/firestore";
 import { Chatroom  } from "./chat.js"; 
 import { LiElements  } from "./lielement.js";
 import "@fortawesome/fontawesome-free/css/all.min.css";

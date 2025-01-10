@@ -42,7 +42,7 @@ export function Authorize(){
             console.log(userCredential.user);
 
             // set name to localStorage
-            setLocalName(userCredential.user.displayName);
+            setLocalName(userCredential.user);
 
             // Redirect to profile.html 
            window.location.href = "../index.html";
@@ -96,9 +96,11 @@ export function Authorize(){
 
         signInWithPopup(auth, provider)
         .then((result) => {
+            // console.log(result);
+            // console.log(result.user.displayName);
 
             // set 
-            setLocalName(result.user.displayName);
+            setLocalName(result.user);
 
             // Redirect to profile.html 
             window.location.href = "../index.html";

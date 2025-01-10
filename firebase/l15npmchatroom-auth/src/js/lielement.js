@@ -1,4 +1,5 @@
-import { format } from "date-fns";
+import { formatDistance } from "date-fns";
+import "@fortawesome/fontawesome-free/css/all.min.css";
 
 export function LiElements(chatul){
     const newli = (data)=>{

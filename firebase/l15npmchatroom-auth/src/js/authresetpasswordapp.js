@@ -1,4 +1,3 @@
-import { doc } from "firebase/firestore";
 import { Authorize  } from "./authorize.js";
 
 // UI

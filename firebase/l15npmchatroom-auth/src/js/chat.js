@@ -1,6 +1,6 @@
 import {db} from "./firebase.js";
 
-import {getFirestore, collection, addDoc, onSnapshot, Timestamp, query, where, orderBy, deleteDoc} from "firebase/firestore";
+import {collection, addDoc, onSnapshot, Timestamp, query, where, orderBy, deleteDoc, getDocs, doc} from "firebase/firestore";
 
 export function Chatroom(room, username){
 
@@ -81,35 +81,35 @@ export function Chatroom(room, username){
 
     // Delete all messages every 15s
 
-    const deleteAllMessages = ()=>{
+    // const deleteAllMessages = ()=>{
 
-        let deleteinter = setInterval(async()=>{
-            try{
+    //     let deleteinter = setInterval(async()=>{
+    //         try{
 
-                const getdatas = await getDocs(dbRef);
+    //             const getdatas = await getDocs(dbRef);
 
-                // stop function call if no data in firebase
+    //             // stop function call if no data in firebase
 
-                if(getdatas.empty){
-                    console.log("No message to delete");
+    //             if(getdatas.empty){
+    //                 console.log("No message to delete");
 
-                    clearInterval(deleteinter);
+    //                 clearInterval(deleteinter);
 
-                    return;
-                }
+    //                 return;
+    //             }
 
-                getdatas.forEach(async(getdata)=>{
-                    await deleteDoc(doc(db,'chats',getdata.id));
-                });
+    //             getdatas.forEach(async(getdata)=>{
+    //                 await deleteDoc(doc(db,'chats',getdata.id));
+    //             });
 
-                console.log("All messages deleted successfully");
-            }catch(error){
-                console.error("Error deleting message: ", error);
-            }
-        }, 1000);
-    }
+    //             console.log("All messages deleted successfully");
+    //         }catch(error){
+    //             console.error("Error deleting message: ", error);
+    //         }
+    //     }, 1000);
+    // }
 
-    deleteAllMessages();
+    // deleteAllMessages();
 
     return {addChat, getChats, updateChatroom, updateUsername};
 }
